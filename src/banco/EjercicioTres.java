@@ -5,6 +5,8 @@
  */
 package banco;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author coste
@@ -27,21 +29,122 @@ public class EjercicioTres extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        txtIn = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        lblFin = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        cmdB = new javax.swing.JButton();
+        cmdR = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Banco");
+        setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Saldo Inicial", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtIn.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        txtIn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtInKeyTyped(evt);
+            }
+        });
+        jPanel2.add(txtIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 60, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 110, 80));
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Saldo Final", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblFin.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        lblFin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel3.add(lblFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 50, 20));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 110, 70));
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Botones", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Times New Roman", 0, 12))); // NOI18N
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cmdB.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        cmdB.setText("Borrar");
+        cmdB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdBActionPerformed(evt);
+            }
+        });
+        jPanel4.add(cmdB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+
+        cmdR.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        cmdR.setText("Resolver");
+        cmdR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdRActionPerformed(evt);
+            }
+        });
+        jPanel4.add(cmdR, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 27, -1, -1));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 120, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtInKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInKeyTyped
+        // TODO add your handling code here:
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtInKeyTyped
+
+    private void cmdBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBActionPerformed
+        // TODO add your handling code here:
+        txtIn.setText("");
+        lblFin.setText("");
+        txtIn.requestFocusInWindow();
+    }//GEN-LAST:event_cmdBActionPerformed
+
+    private void cmdRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRActionPerformed
+        // TODO add your handling code here:}
+        String t;
+        double i, f, p;
+        
+        if (txtIn.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Digite el saldo inicial", "Error", JOptionPane.ERROR_MESSAGE);
+            txtIn.requestFocusInWindow();
+        }
+        
+        else {
+        
+        i = Double.parseDouble(txtIn.getText());
+        
+        p = (i * 1.5) / 100;
+        
+        f = i + p;
+        
+        t = String.valueOf(f);
+        lblFin.setText(t);
+        }
+    }//GEN-LAST:event_cmdRActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +182,13 @@ public class EjercicioTres extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdB;
+    private javax.swing.JButton cmdR;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel lblFin;
+    private javax.swing.JTextField txtIn;
     // End of variables declaration//GEN-END:variables
 }
