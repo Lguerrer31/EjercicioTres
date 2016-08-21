@@ -127,22 +127,26 @@ public class EjercicioTres extends javax.swing.JFrame {
         // TODO add your handling code here:}
         String t;
         double i, f, p;
-        
-        if (txtIn.getText().trim().isEmpty()){
+
+        if (txtIn.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Digite el saldo inicial", "Error", JOptionPane.ERROR_MESSAGE);
             txtIn.requestFocusInWindow();
-        }
-        
-        else {
-        
-        i = Double.parseDouble(txtIn.getText());
-        
-        p = (i * 1.5) / 100;
-        
-        f = i + p;
-        
-        t = String.valueOf(f);
-        lblFin.setText(t);
+        } else {
+
+            i = Double.parseDouble(txtIn.getText());
+
+            if (i == 0) {
+                JOptionPane.showMessageDialog(null, "No se puede colocar 0");
+                txtIn.requestFocusInWindow();
+            } else {
+
+                p = (i * 1.5) / 100;
+
+                f = i + p;
+
+                t = String.valueOf(f);
+                lblFin.setText(t);
+            }
         }
     }//GEN-LAST:event_cmdRActionPerformed
 
